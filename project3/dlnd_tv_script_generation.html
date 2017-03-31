@@ -12251,7 +12251,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[10]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_embed</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">):</span>
@@ -12265,7 +12265,6 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
     <span class="n">embedding</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">Variable</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">random_uniform</span><span class="p">((</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">embed_dim</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;embeddings&quot;</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">tf</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">embedding_lookup</span><span class="p">(</span><span class="n">embedding</span><span class="p">,</span> <span class="n">input_data</span><span class="p">)</span>
-
 
 <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">DON&#39;T MODIFY ANYTHING IN THIS CELL THAT IS BELOW THIS LINE</span>
@@ -12311,7 +12310,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[11]:</div>
+<div class="prompt input_prompt">In&nbsp;[24]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">build_rnn</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
@@ -12371,7 +12370,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[12]:</div>
+<div class="prompt input_prompt">In&nbsp;[25]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">build_nn</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">rnn_size</span><span class="p">,</span> <span class="n">input_data</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">):</span>
@@ -12383,7 +12382,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 <span class="sd">    :param vocab_size: Vocabulary size</span>
 <span class="sd">    :return: Tuple (Logits, FinalState)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">embed</span> <span class="o">=</span> <span class="n">get_embed</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="n">embed</span> <span class="o">=</span> <span class="n">get_embed</span><span class="p">(</span><span class="n">input_data</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">rnn_size</span> <span class="o">*</span> <span class="mf">0.8</span><span class="p">))</span>
     <span class="n">outputs</span><span class="p">,</span> <span class="n">final_state</span> <span class="o">=</span> <span class="n">build_rnn</span><span class="p">(</span><span class="n">cell</span><span class="p">,</span> <span class="n">embed</span><span class="p">)</span>
     <span class="n">predictions</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">contrib</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">fully_connected</span><span class="p">(</span>
         <span class="n">outputs</span><span class="p">,</span>
@@ -12456,7 +12455,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[13]:</div>
+<div class="prompt input_prompt">In&nbsp;[26]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_batches</span><span class="p">(</span><span class="n">int_text</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_length</span><span class="p">):</span>
@@ -12530,7 +12529,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[14]:</div>
+<div class="prompt input_prompt">In&nbsp;[27]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Number of Epochs</span>
@@ -12569,7 +12568,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[15]:</div>
+<div class="prompt input_prompt">In&nbsp;[28]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12620,7 +12619,7 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[16]:</div>
+<div class="prompt input_prompt">In&nbsp;[29]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12666,15 +12665,15 @@ Barney_Gumble: Yeah, you should only drink to enhance your social skills.
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Epoch   0 Batch    0/22   train_loss = 8.834
-Epoch   4 Batch   12/22   train_loss = 0.420
-Epoch   9 Batch    2/22   train_loss = 0.349
-Epoch  13 Batch   14/22   train_loss = 0.227
-Epoch  18 Batch    4/22   train_loss = 0.128
-Epoch  22 Batch   16/22   train_loss = 0.056
-Epoch  27 Batch    6/22   train_loss = 0.026
-Epoch  31 Batch   18/22   train_loss = 0.017
-Epoch  36 Batch    8/22   train_loss = 0.011
+<pre>Epoch   0 Batch    0/22   train_loss = 8.833
+Epoch   4 Batch   12/22   train_loss = 0.442
+Epoch   9 Batch    2/22   train_loss = 0.411
+Epoch  13 Batch   14/22   train_loss = 0.300
+Epoch  18 Batch    4/22   train_loss = 0.226
+Epoch  22 Batch   16/22   train_loss = 0.139
+Epoch  27 Batch    6/22   train_loss = 0.086
+Epoch  31 Batch   18/22   train_loss = 0.035
+Epoch  36 Batch    8/22   train_loss = 0.016
 Model Trained and Saved
 </pre>
 </div>
@@ -12696,7 +12695,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[35]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12722,7 +12721,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[23]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -12761,7 +12760,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[24]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_tensors</span><span class="p">(</span><span class="n">loaded_graph</span><span class="p">):</span>
@@ -12816,7 +12815,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[25]:</div>
+<div class="prompt input_prompt">In&nbsp;[38]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
@@ -12876,7 +12875,7 @@ Model Trained and Saved
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[27]:</div>
+<div class="prompt input_prompt">In&nbsp;[39]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">gen_length</span> <span class="o">=</span> <span class="mi">200</span>
@@ -12935,24 +12934,39 @@ Model Trained and Saved
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>moe_szyslak: uh...(ad lib singing) my bar could about the safety meet of for the friend.
-carl_carlson: and, it.
-moe_szyslak: wait it.. can didn&#39;t drug shipment who you are could pitcher two while.
-homer_simpson: yeah, homer.
-lenny_leonard:(impressed.
-homer_simpson: ivana this off off a adrift in?
-lisa_simpson: that&#39;s homer, but things that i&#39;ll have the help...
-homer_simpson:(gasp to that two will worth roller...
-moe_szyslak:(boozy) same jockey, know are dangerous whip(she...
-homer_simpson: ah, homer, that it is off roller you are that sure it, you are me the pickles down.
-dr... homer_simpson:(quiet me off on you are that&#39;s two the roof here.
-carl_carlson: yeah, but at the planning for ain&#39;t while?
-moe_szyslak: ah, homer, feel it something how all that are perfected the off? uh...
-homer_simpson:(singing) that off save tv) that&#39;s that&#39;s too
+<pre>moe_szyslak: uh... i ad lib singing) my bar could guy in the truth.
+moe_szyslak: yeah, me are so be too--
+that&#39;s homer, y&#39;know better bike. now and plus mouth)&#34;...(did.
+homer_simpson: well, go, i&#39;ve been be loan ridiculous.
+homer_simpson: yeah, uh! what&#39;s ah, we you guys do it again.
+homer_simpson:(camera) another good those you adrift out!
+moe_szyslak: and on the find for trainers...
+homer_simpson:(apu)&#34;.
+homer_simpson: &#39;evening, but do some i&#39;ve my help shock, we one) can hit a death.
+homer_simpson:(stern) you always outside, but joe experiments guy?
+moe_szyslak: chief admit on mount minute.
+moe_szyslak: not, you on for so can you know you&#39;re a feel nothin&#39; mount another glass the center.
+moe_szyslak: we&#39;ll that the kitchen)
+homer_simpson: well, you already adrift for she so...
+moe_szyslak:(noises) yeah, well!
+homer_simpson: that&#39;s
 </pre>
 </div>
 </div>
 
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+</div>
 </div>
 </div>
 
